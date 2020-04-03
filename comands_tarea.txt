@@ -1,0 +1,49 @@
+# TAREA
+
+# Creamos el contendor con Docker Compose y el archivo mongo.yml
+    docker-compose -f mongo.yml up -d
+
+# Verificamos si el contendor fue creado
+    docker ps
+
+# Ingresamos a la bash del contendor
+    docker exec -it mongov1 bash
+
+# Ingresamos al mongo con el usuario que creamos 'root'
+    mongo -u root -p root
+
+# Una vez que estes en la consola de mongo creamos un nuevo usuario
+
+    use admin
+
+    db.createUser(
+        {
+            user: "boris",
+            pwd: "boris",
+            roles: [ { role: "readWrite", db: "test" } ]
+        }
+    )
+
+    exit
+
+# Ingresamos con nuestro nuevo usuario
+    mongo -u boris -p boris
+# Ingresamos a nuestra base de datos y creamos una coleccion y mostramos el documento de la coleccion
+
+    use test
+
+    db.alumnos.insert({ nombre: "Juanito" })
+
+    db.alumnos.find()
+
+    exit
+
+# intengamos ingresar con otro usuario
+    mongo
+# Ingresamos a la BD, descpues intentamos observar el documento de la coleccion alumnos y observaremos que no tenemos permitido, porque necesitamos autentificarnos
+
+    use test
+
+    db.alumnos.find()
+
+# Finalmente probaremos observando el documento de la coleccion con el programa ROBO 3T, con el usuario que creamos 'boris'

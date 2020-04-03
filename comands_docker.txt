@@ -1,0 +1,24 @@
+# Descarga una imagen desde Docker hub
+    docker pull <image-name>:<version>
+# Lista las imagenes descargadas
+    docker image ls
+# Elimina la imagen
+    docker rmi <name o id>
+# Crear y ejecutar un contenedor en segundo plano
+    docker --name <container-name> run -d <image-name>
+# Muestra los contenedores que se estan ejecutando
+    docker ps
+# Inicia un contenedor detenido
+    docker start <cont-name o id>
+# Detiene un contenedor
+    docker stop <cont-name o id>
+# Crea una imagen Docker apartir de un dockerfile
+    docker build -t <path>/<repo-name>:<tag> .
+# Crea los contenedores definidos en el .yml con Docker Compose
+    docker-compose -f <path>/<compose-file>.yml
+# Crea un contenedor que utilizara un volumen
+    docker --name <cont-name> -v <path-host>:<path-contenedor> -d <image-name>
+
+# comandos completos:
+    https://docs.docker.com/engine/reference/commandline/docker/
+

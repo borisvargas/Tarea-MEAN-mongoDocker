@@ -1,0 +1,22 @@
+# Version de Docker-Compose a utilizar
+version: '3.7'
+# servicios que se definiran
+services:
+  # definicion del primer servicio: Mongo
+  mongo:
+    # nombre de nuestro contenedor
+    container_name: mongov1
+    # imagen que se utilizara
+    image: mongo
+    # especifica la politica de reinicio
+    restart: always
+    # autentificacion
+    command: [--auth]
+    # puertos de conexion
+    ports:
+      - 27017:27017
+    # variables de entorno
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+

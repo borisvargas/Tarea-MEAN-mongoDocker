@@ -1,0 +1,23 @@
+# Version de Docker-Compose a utilizar
+version: '3.1'
+
+# servicios que se definiran
+services:
+  # definicion del primer servicio: Mongo
+  mongo:
+    #Docker compose nos permite utilizar dockerfiles para crear contenedores asi que utilizamos el que creamos en el ejemplo anterior
+    context: . # direccion del dockerfile
+    dockerfile: Dockerfile
+
+  mongo-express:
+    # imagen que se utilizara
+    image: mongo-express
+    # especifica la politica de reinicio
+    restart: always
+    # puertos de conexion
+    ports:
+      - 8081:8081
+    # variales de entorno
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
